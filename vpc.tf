@@ -43,7 +43,7 @@ resource "aws_subnet" "vpc-2-subnet" {
   }
   resource "aws_internet_gateway" "vpc-2-igw" {
     vpc_id = aws_vpc.vpc-2.id
-    }
+    } 
     resource "aws_route_table" "vpc-2-rt" {
         vpc_id = aws_vpc.vpc-2.id
         route {
