@@ -6,7 +6,7 @@ terraform {
    }
 }
 provider "aws" {
-    region = "us-east-1"
+    region = var.region
   
 }
 
@@ -33,18 +33,18 @@ resource "aws_vpc" "vpc_2" {
   
 }
 resource "aws_subnet" "vpc-2-subnet" {
-     vpc_id = "vpc-010e1b5b904fef06c"
-     cidr_block = "10.0.0.0/24"
-     map_public_ip_on_launch = true
-     tags = {
+      vpc_id = "vpc-010e1b5b904fef06c"
+      cidr_block = "10.0.0.0/24"
+      map_public_ip_on_launch = true
+      tags = {
        name = "my_subnet"
        env = "dev"   
          }
   }
-  resource "aws_internet_gateway" "vpc-2-igw" {
-    vpc_id = aws_vpc.vpc-2.id
+      resource "aws_internet_gateway" "vpc-2-igw" {
+      vpc_id = aws_vpc.vpc-2.id
     } 
-    resource "aws_route_table" "vpc-2-rt" {
+      resource "aws_route_table" "vpc-2-rt" {
         vpc_id = aws_vpc.vpc-2.id
         route {
             cidr_block = "10.0.0.0/24"
@@ -56,3 +56,16 @@ resource "aws_subnet" "vpc-2-subnet" {
         route_table_id = aws_route_table.vpc-2-rt.id
          
        }
+       variable "region" {
+        description = "us-east-1"
+         
+       }
+
+       output "aws_instance" {
+       value = aws_instance.terraform-1.public_ip
+         
+       }
+       
+       output "aws_vpc" {
+       value = aws_vpc.vpc_2.id
+      }
