@@ -7,6 +7,7 @@ ami = "ami-04b4f1a9cf54c11d0"
 key_name = "teraaform-1"
 instance_type = t2.micro
 vpc_security_group_ids = [ "terraform", "default"]
+subnet_id = aws_subnet.vpc-2-subnet.id
 tags = {
 
 Name = "terraform-1"
