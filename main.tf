@@ -9,14 +9,14 @@ provider "aws" {
 }
 
 module "my_vpc" {
-    source = "vpc"
+    source = "./vpc"
     vpc_cidr = var.vpc_cidr
     project = var.project
     subnet_cidr = var.subnet_cidr
     azl = var.azl
 }
 module "my_instance" {
-    source = "instance"
+    source = "./instance"
     ami_id = var.ami_id
     instance_type = var.instance_type
     key_name = var.key_name
