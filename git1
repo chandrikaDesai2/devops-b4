@@ -1,0 +1,9 @@
+steps to create file and add and commit it to local repo and then upload it to remote repo.
+Start:
+1. touch filename 
+2. vim filename
+3. git add filename
+4. git commit filename
+5. git push url --set-upstream main
+6. git push url --set-upsteam master
+End!
